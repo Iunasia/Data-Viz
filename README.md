@@ -1,4 +1,4 @@
-# 🌏 ASEAN Data Dashboard
+# ASEAN Data Dashboard
 
 ## Project Overview
 The ASEAN Data Dashboard is an interactive web application built using **Python and Streamlit**.  
