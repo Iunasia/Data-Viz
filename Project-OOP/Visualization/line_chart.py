@@ -1,19 +1,16 @@
-import streamlit as st
 import matplotlib.pyplot as plt
+import streamlit as st
+from Visualization.base_chart import BaseChart
 
 
-class LineChart:
+class LineChart(BaseChart):
 
-    def __init__(self, data):
-        self.data = data
+    def plot(self):
 
-    def plot(self, title="Line Chart"):
         fig, ax = plt.subplots()
 
         self.data.plot(ax=ax)
 
-        ax.set_title(title)
-        ax.set_xlabel("Index")
-        ax.set_ylabel("Value")
+        ax.set_title(self.title)
 
         st.pyplot(fig)

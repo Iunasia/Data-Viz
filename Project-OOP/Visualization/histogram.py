@@ -1,19 +1,16 @@
-import streamlit as st
 import matplotlib.pyplot as plt
+import streamlit as st
+from Visualization.base_chart import BaseChart
 
 
-class Histogram:
+class Histogram(BaseChart):
 
-    def __init__(self, data):
-        self.data = data
+    def plot(self):
 
-    def plot(self, title="Histogram"):
         fig, ax = plt.subplots()
 
         self.data.plot(kind="hist", bins=20, ax=ax)
 
-        ax.set_title(title)
-        ax.set_xlabel("Value")
-        ax.set_ylabel("Frequency")
+        ax.set_title(self.title)
 
         st.pyplot(fig)

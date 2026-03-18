@@ -1,20 +1,19 @@
-import streamlit as st
 import matplotlib.pyplot as plt
+import streamlit as st
+from Visualization.base_chart import BaseChart
 
 
-class ScatterPlot:
+class ScatterPlot(BaseChart):
 
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def plot(self):
 
-    def plot(self, title="Scatter Plot"):
         fig, ax = plt.subplots()
 
-        ax.scatter(self.x, self.y)
+        columns = self.data.columns
 
-        ax.set_title(title)
-        ax.set_xlabel("X")
-        ax.set_ylabel("Y")
+        if len(columns) >= 2:
+            ax.scatter(self.data[columns[0]], self.data[columns[1]])
+
+        ax.set_title(self.title)
 
         st.pyplot(fig)

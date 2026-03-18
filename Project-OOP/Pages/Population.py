@@ -1,10 +1,27 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
+from models.dataset import Dataset
+from Visualization.line_chart import LineChart
+from Visualization.bar_chart import BarChart
+from Visualization.pie_chart import PieChart
 
-country = st.sidebar.selectbox(
-    "Select Country",
-    ["Singapore", "Cambodia", "Malaysia", "Indonesia", "Myanmar", "Philippines", "Thailand", "Vietnam", "Brunei"]
-)
+st.title("ASEAN Population Dashboard")
 
-year = st.sidebar.slider("Year", 2000, 2025)
+dataset = Dataset("Datasets/asean_population_2000_2026.csv")
+df = dataset.load()
+
+if df is not None:
+
+    st.subheader("Dataset Preview")
+    st.dataframe(df)
+
+    data = dataset.numeric()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        LineChart(data, "Population Growth").plot()
+
+    with col2:
+        BarChart(data, "Population Comparison").plot()
+
+    PieChart(data, "Population Distribution").plot()

@@ -1,34 +1,27 @@
 import streamlit as st
-import pandas as pd
+from models.dataset import Dataset
+from Visualization.line_chart import LineChart
+from Visualization.bar_chart import BarChart
+from Visualization.pie_chart import PieChart
 
-# Page configuration MUST be first
-st.set_page_config(
-    page_title="ASEAN Dashboard",
-    layout="wide"
-)
+st.title("ASEAN Tourism Visitors Dashboard")
 
-st.title("ASEAN Visitor Dashboard")
+dataset = Dataset("Datasets/visitor_asean.csv")
+df = dataset.load()
 
-file_path = "./Data/visitor_asean.csv"
-
-# File handling + error handling
-try:
-    df = pd.read_csv(file_path)
+if df is not None:
 
     st.subheader("Dataset Preview")
     st.dataframe(df)
 
-    # Clean numeric data
-    df = df.replace(',', '', regex=True)
-    df = df.apply(pd.to_numeric, errors='ignore')
+    data = dataset.numeric()
 
-    numeric_df = df.select_dtypes(include='number')
+    col1, col2 = st.columns(2)
 
-    st.subheader("Visitors Trend")
-    st.line_chart(numeric_df)
+    with col1:
+        LineChart(data, "Visitor Trend").plot()
 
-except FileNotFoundError:
-    st.error("Dataset file not found.")
-except Exception as e:
-    st.error(f"Error loading dataset: {e}")
+    with col2:
+        BarChart(data, "Visitor Comparison").plot()
 
+    PieChart(data, "Visitor Distribution").plot()

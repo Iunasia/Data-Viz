@@ -1,21 +1,22 @@
 import pandas as pd
-import os
 import streamlit as st
+
 
 class Dataset:
 
-    def __init__(self, file_path):
-        self.file_path = file_path
+    def __init__(self, path):
+        self.path = path
         self.data = None
 
     def load(self):
         try:
-            if not os.path.exists(self.file_path):
-                raise FileNotFoundError(f"{self.file_path} not found")
-
-            self.data = pd.read_csv(self.file_path)
+            self.data = pd.read_csv(self.path)
             return self.data
-
         except Exception as e:
             st.error(f"Error loading dataset: {e}")
             return None
+
+    def numeric(self):
+        if self.data is not None:
+            return self.data.select_dtypes(include="number")
+        return None

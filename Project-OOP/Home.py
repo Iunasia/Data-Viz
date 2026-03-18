@@ -1,21 +1,11 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
-st.set_page_config(
-    page_title="ASEAN Dashboard",
-    layout="wide"
-)
+st.set_page_config(page_title="ASEAN Data Dashboard", layout="wide")
 
-st.title("🌏 ASEAN Data Dashboard")
+# Hide default Streamlit chrome
 
-st.write("""
-Welcome to the ASEAN Data Visualization Dashboard.
 
-This dashboard includes analysis for:
-
-• GDP per Capita  
-• Population Growth  
-• CPI Inflation  
-• Tourism Visitors  
-• AI Job Market  
-• Data Science Salaries
-""")
+# Main page content
+st.title("ASEAN Data Dashboard")
+st.write("Dashboard content goes here...")
