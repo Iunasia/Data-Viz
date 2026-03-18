@@ -6,3 +6,4 @@ class BaseChart:
 
     def plot(self):
         raise NotImplementedError("Subclasses must implement plot() method")
+    
