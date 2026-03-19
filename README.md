@@ -1,72 +1,69 @@
 # ASEAN Data Dashboard
 
-## Project Overview
-The ASEAN Data Dashboard is an interactive web application built using **Python and Streamlit**.  
-It visualizes important data related to ASEAN countries such as **population, economy, and job trends**.
+An interactive web dashboard built with **Python and Streamlit** that visualizes ASEAN country data across economy, population, and job trends.
 
-This project applies **Object-Oriented Programming (OOP)** concepts to create reusable and maintainable chart components.
-
----
-
-## Objectives
-- Provide clear data visualization for ASEAN datasets  
-- Help users explore trends easily  
-- Apply OOP concepts in a real-world project  
-- Build an interactive dashboard using Streamlit  
+Uses **Object-Oriented Programming** for reusable, maintainable chart components.
 
 ---
 
 ## Features
-- Bar Chart visualization  
-- Pie Chart visualization  
-- Multiple pages (Economy, Population, Jobs)  
-- Interactive data filtering  
-- OOP-based design (BaseChart, BarChart, PieChart)
+
+- Bar and Pie chart visualizations
+- Multiple pages: Economy, Population, Jobs
+- Interactive data filtering
+- OOP-based chart design (BaseChart → BarChart, PieChart)
 
 ---
 
 ## Project Structure
+
+```
 project/
-│
 ├── app.py
 ├── pages/
-│ ├── economy.py
-│ ├── population.py
-│ └── jobs.py
+│   ├── economy.py
+│   ├── population.py
+│   └── jobs.py
 ├── charts/
-│ ├── base_chart.py
-│ ├── bar_chart.py
-│ └── pie_chart.py
+│   ├── base_chart.py
+│   ├── bar_chart.py
+│   └── pie_chart.py
 ├── data/
-│ └── dataset.csv
+│   └── dataset.csv
 └── README.md
+```
 
 ---
 
 ## OOP Design
-This project uses Object-Oriented Programming:
 
-- **BaseChart** → Parent class  
-- **BarChart** → Inherits from BaseChart  
-- **PieChart** → Inherits from BaseChart  
-
-This improves:
-- Code reusability  
-- Maintainability  
-- Scalability  
+| Class | Role |
+|-------|------|
+| `BaseChart` | Parent class with shared logic |
+| `BarChart` | Inherits from BaseChart |
+| `PieChart` | Inherits from BaseChart |
 
 ---
 
-## Technologies Used
-- Python  
-- Streamlit  
-- Pandas  
-- Matplotlib / Plotly  
+## Technologies
+
+- Python
+- Streamlit
+- Pandas
+- Matplotlib / Plotly
 
 ---
 
-## How to Run the Project
+## How to Run
 
-### 1. Install dependencies
+1. Install dependencies:
+
 ```bash
-pip install streamlit pandas matplotlib
+pip install streamlit pandas matplotlib plotly
+```
+
+2. Run the app:
+
+```bash
+streamlit run app.py
+```
